@@ -49,7 +49,7 @@ public class PilotController {
         return "view-pilot";
     }
 
-    @RequestMapping(value = { "/pilot/view/license-number/{licenseNumber}/fly-hour", "/pilot/view/license-number/{licenseNumber}/fly-hour/{flyHour}" })
+    @RequestMapping(value = { "/pilot/update/license-number/{licenseNumber}/fly-hour", "/pilot/update/license-number/{licenseNumber}/fly-hour/{flyHour}" })
     public String challangePathChangeFlyHour(   @PathVariable(value="licenseNumber", required = false) String licenseNumber,
                                                 @PathVariable(value="flyHour", required = false) String flyHour,
                                                 Model model) {
