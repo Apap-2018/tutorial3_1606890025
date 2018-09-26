@@ -41,7 +41,7 @@ public class PilotController {
         return "viewall-pilot";
     }
 
-    // latihan nomor 1
+
     @RequestMapping(value = { "/pilot/view/license-number", "/pilot/view/license-number/{licenseNumber}" })
     public String challangePath(@PathVariable(value="licenseNumber", required = false) String licenseNumber, Model model) {
         PilotModel archive = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
@@ -49,7 +49,6 @@ public class PilotController {
         return "view-pilot";
     }
 
-    // latihan nomor 2
     @RequestMapping(value = { "/pilot/view/license-number/{licenseNumber}/fly-hour", "/pilot/view/license-number/{licenseNumber}/fly-hour/{flyHour}" })
     public String challangePathChangeFlyHour(   @PathVariable(value="licenseNumber", required = false) String licenseNumber,
                                                 @PathVariable(value="flyHour", required = false) String flyHour,
@@ -60,16 +59,16 @@ public class PilotController {
             archive.setFlyHour(Long.parseLong(flyHour));
             response = "Jam terbang pilot berhasil diubah!";
         }
+        model.addAttribute("pilot", archive);
         model.addAttribute("response", response);
         return "view-pilot";
     }
 
-    // latihan nomor 3
     @RequestMapping(value = { "/pilot/delete/id", "/pilot/delete/id/{id}" })
     public String deletePilot( @PathVariable(value="id", required=false) String id, Model model) {
         Boolean deleted = pilotService.deletePilot(id);
         String response = deleted? "berhasil menghapus pilot":"menghapus pilot gagal";
         model.addAttribute("response", response);
-        return "update-delete-pilot";
+        return "delete-pilot";
     }
 }
