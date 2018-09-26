@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>View Detail</title>
+    </head>
+    <body th:switch="${pilot}">
+        <p th:case="null">Maaf, pilot tidak ditemukan</p>
+        <div th:case="*">
+            <h3 th:text="${pilot.id}"></h3>
+            <h3 th:text="${pilot.licenseNumber}"></h3>
+            <h3 th:text="${pilot.name}"></h3>
+            <h3 th:text="${pilot.flyHour}"></h3>
+        </div>
+        <p th:if="${flyHour != null}" th:text="Jam terbang pilot berhasil diganti"></p>
+    </body>
+</html>
